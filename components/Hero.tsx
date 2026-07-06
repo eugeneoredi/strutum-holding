@@ -9,7 +9,7 @@ export function Hero() {
         src="/logo-mark.png"
         alt=""
         width={520}
-        height={540}
+        height={541}
         aria-hidden="true"
         className="pointer-events-none select-none absolute -right-24 top-8 opacity-[0.07] hidden lg:block"
       />

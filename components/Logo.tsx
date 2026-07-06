@@ -1,5 +1,9 @@
 import Image from "next/image";
 
+// Actual asset is 300x312 (not perfectly square) — keep width/height
+// proportional to avoid distortion and the Next.js aspect-ratio warning.
+const ASPECT = 300 / 312;
+
 const SIZES = {
   sm: { mark: 30, gap: "gap-2.5", name: "text-[13px]", sub: "text-[8px] mt-0.5" },
   md: { mark: 40, gap: "gap-3", name: "text-[16px]", sub: "text-[9px] mt-1" },
@@ -15,13 +19,14 @@ export function Logo({
 }) {
   const text = variant === "dark" ? "#F8F7F2" : "#071827";
   const { mark, gap, name, sub } = SIZES[size];
+  const markWidth = Math.round(mark * ASPECT);
 
   return (
     <div className={`flex items-center ${gap} select-none`}>
       <Image
         src="/logo-mark.png"
         alt="Strutum Holding"
-        width={mark}
+        width={markWidth}
         height={mark}
         className="shrink-0"
         priority
