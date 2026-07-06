@@ -1,9 +1,18 @@
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Play } from "lucide-react";
 
 export function Hero() {
   return (
     <section className="relative overflow-hidden bg-navy text-warm-white">
+      <Image
+        src="/logo-mark.png"
+        alt=""
+        width={520}
+        height={540}
+        aria-hidden="true"
+        className="pointer-events-none select-none absolute -right-24 top-8 opacity-[0.07] hidden lg:block"
+      />
       {/* Abstract skyline signature — stands in for a licensed photograph */}
       <svg
         className="absolute inset-x-0 bottom-0 w-full h-[45%] opacity-70"

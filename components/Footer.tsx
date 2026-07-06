@@ -8,7 +8,7 @@ export function Footer() {
       <div className="h-px w-full bg-gradient-to-r from-transparent via-gold/60 to-transparent" />
       <div className="mx-auto max-w-7xl px-6 lg:px-10 py-16 grid gap-12 lg:grid-cols-[1.3fr_1fr_1fr_1.2fr]">
         <div>
-          <Logo variant="dark" />
+          <Logo variant="dark" size="sm" />
           <p className="mt-5 text-[14px] leading-relaxed text-warm-white/65 max-w-xs">
             Strutum Holding helps organizations operate responsibly, comply
             confidently and create measurable impact across Africa.
