@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
@@ -37,47 +40,60 @@ const ARTICLES = [
 const CATEGORIES = ["All", "CSR / ESG", "Tax", "Business", "Reports"];
 
 export function InsightsList() {
+  const [active, setActive] = useState("All");
+
+  const filtered =
+    active === "All" ? ARTICLES : ARTICLES.filter((a) => a.category === active);
+
   return (
     <section className="bg-white">
       <div className="mx-auto max-w-7xl px-6 lg:px-10 py-20 lg:py-28">
         <div className="flex flex-wrap gap-3 mb-14">
           {CATEGORIES.map((cat) => (
-            <span
+            <button
               key={cat}
-              className={`text-[12px] tracking-wide px-4 py-2 border ${
-                cat === "All"
+              onClick={() => setActive(cat)}
+              aria-pressed={active === cat}
+              className={`text-[12px] tracking-wide px-4 py-2 border transition-colors cursor-pointer ${
+                active === cat
                   ? "border-gold bg-gold text-navy font-semibold"
-                  : "border-charcoal/15 text-gray"
+                  : "border-charcoal/15 text-gray hover:border-gold/50 hover:text-charcoal"
               }`}
             >
               {cat.toUpperCase()}
-            </span>
+            </button>
           ))}
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8">
-          {ARTICLES.map((a) => (
-            <Link
-              key={a.href}
-              href={a.href}
-              className="group block border border-charcoal/10 hover:border-gold/60 transition-colors p-8"
-            >
-              <p className="text-[11px] tracking-[0.15em] text-gold font-semibold">
-                {a.category.toUpperCase()}
-              </p>
-              <h3 className="font-display text-[21px] leading-snug text-charcoal mt-4 group-hover:text-navy">
-                {a.title}
-              </h3>
-              <p className="mt-3 text-[13.5px] leading-relaxed text-gray">
-                {a.excerpt}
-              </p>
-              <span className="mt-6 inline-flex items-center gap-2 text-[12.5px] font-semibold text-gray group-hover:text-gold transition-colors">
-                Read Insight
-                <ArrowRight size={14} className="group-hover:translate-x-0.5 transition-transform" />
-              </span>
-            </Link>
-          ))}
-        </div>
+        {filtered.length === 0 ? (
+          <p className="text-[14px] text-gray">
+            No insights in this category yet — check back soon.
+          </p>
+        ) : (
+          <div className="grid md:grid-cols-2 gap-8">
+            {filtered.map((a) => (
+              <Link
+                key={a.href}
+                href={a.href}
+                className="group block border border-charcoal/10 hover:border-gold/60 transition-colors p-8"
+              >
+                <p className="text-[11px] tracking-[0.15em] text-gold font-semibold">
+                  {a.category.toUpperCase()}
+                </p>
+                <h3 className="font-display text-[21px] leading-snug text-charcoal mt-4 group-hover:text-navy">
+                  {a.title}
+                </h3>
+                <p className="mt-3 text-[13.5px] leading-relaxed text-gray">
+                  {a.excerpt}
+                </p>
+                <span className="mt-6 inline-flex items-center gap-2 text-[12.5px] font-semibold text-gray group-hover:text-gold transition-colors">
+                  Read Insight
+                  <ArrowRight size={14} className="group-hover:translate-x-0.5 transition-transform" />
+                </span>
+              </Link>
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );
