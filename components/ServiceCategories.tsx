@@ -9,19 +9,16 @@ import {
   BarChart3,
 } from "lucide-react";
 
-// Sub-category links point to the parent division page for now, since
-// dedicated /services/* pages aren't built yet. Update hrefs once those
-// individual pages exist.
 const GROUPS = [
   {
     division: "Strutum Impact",
     icon: Leaf,
     items: [
-      { icon: BarChart3, name: "CSR & ESG", href: "/strutum-impact" },
+      { icon: BarChart3, name: "CSR & ESG", href: "/strutum-impact#csr-esg" },
       {
         icon: ClipboardList,
         name: "Monitoring & Evaluation",
-        href: "/strutum-impact",
+        href: "/strutum-impact#monitoring-evaluation",
       },
     ],
   },
@@ -29,12 +26,12 @@ const GROUPS = [
     division: "Strutum Advisory",
     icon: LineChart,
     items: [
-      { icon: Calculator, name: "Accounting & Tax", href: "/strutum-advisory" },
-      { icon: Banknote, name: "CFO Services", href: "/strutum-advisory" },
+      { icon: Calculator, name: "Accounting & Tax", href: "/strutum-advisory#accounting-tax" },
+      { icon: Banknote, name: "CFO Services", href: "/strutum-advisory#cfo-services" },
       {
         icon: ShieldCheck,
         name: "Compliance Advisory",
-        href: "/strutum-advisory",
+        href: "/strutum-advisory#compliance-advisory",
       },
     ],
   },

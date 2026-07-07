@@ -25,7 +25,7 @@ const ITEMS = [
 
 export function ComplianceChecklist() {
   return (
-    <section className="bg-navy text-warm-white">
+    <section id="compliance-advisory" className="bg-navy text-warm-white scroll-mt-24">
       <div className="mx-auto max-w-7xl px-6 lg:px-10 py-20 lg:py-28">
         <p className="text-[12px] tracking-[0.2em] text-gold font-semibold mb-4">
           COMPLIANCE

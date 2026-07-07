@@ -12,11 +12,11 @@ import {
 } from "lucide-react";
 
 const SERVICES = [
-  { icon: Calculator, name: "Accounting & Bookkeeping" },
+  { icon: Calculator, name: "Accounting & Bookkeeping", id: "accounting-tax" },
   { icon: ReceiptText, name: "Tax Advisory & Compliance" },
   { icon: Wallet, name: "Payroll & Statutory Compliance" },
   { icon: FileBarChart, name: "Financial Reporting" },
-  { icon: Landmark, name: "CFO-as-a-Service / Outsourced Finance" },
+  { icon: Landmark, name: "CFO-as-a-Service / Outsourced Finance", id: "cfo-services" },
   { icon: Briefcase, name: "Business Advisory & Performance" },
   { icon: ShieldAlert, name: "Internal Controls & Risk Advisory" },
   { icon: Building2, name: "Company Registration & Secretarial Support" },
@@ -36,8 +36,12 @@ export function AdvisoryServicesGrid() {
         </h2>
 
         <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-charcoal/10 border border-charcoal/10">
-          {SERVICES.map(({ icon: Icon, name }) => (
-            <div key={name} className="bg-white p-7 flex flex-col gap-4">
+          {SERVICES.map(({ icon: Icon, name, id }) => (
+            <div
+              key={name}
+              id={id}
+              className="bg-white p-7 flex flex-col gap-4 scroll-mt-28"
+            >
               <Icon size={22} className="text-gold" strokeWidth={1.5} />
               <p className="text-[14px] font-medium text-charcoal leading-snug">
                 {name}

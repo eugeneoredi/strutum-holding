@@ -12,13 +12,13 @@ import {
 } from "lucide-react";
 
 const SERVICES = [
-  { icon: Target, name: "CSR Strategy & Program Design" },
+  { icon: Target, name: "CSR Strategy & Program Design", id: "csr-esg" },
   { icon: ClipboardCheck, name: "CSR Implementation & Project Management" },
   { icon: Leaf, name: "ESG & Sustainability Advisory" },
   { icon: BarChart3, name: "Impact Measurement & Reporting" },
   { icon: Users, name: "Community Engagement & Stakeholder Mapping" },
   { icon: Building2, name: "Corporate Foundation Management" },
-  { icon: ClipboardList, name: "Monitoring & Evaluation (M&E)" },
+  { icon: ClipboardList, name: "Monitoring & Evaluation (M&E)", id: "monitoring-evaluation" },
   { icon: FileText, name: "Sustainability Reporting Support" },
   { icon: HeartHandshake, name: "Donor & Development Partner Support" },
   { icon: MapPin, name: "Field Coordination & Partner Management" },
@@ -36,8 +36,12 @@ export function ImpactServicesGrid() {
         </h2>
 
         <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-charcoal/10 border border-charcoal/10">
-          {SERVICES.map(({ icon: Icon, name }) => (
-            <div key={name} className="bg-white p-7 flex flex-col gap-4">
+          {SERVICES.map(({ icon: Icon, name, id }) => (
+            <div
+              key={name}
+              id={id}
+              className="bg-white p-7 flex flex-col gap-4 scroll-mt-28"
+            >
               <Icon size={22} className="text-gold" strokeWidth={1.5} />
               <p className="text-[14px] font-medium text-charcoal leading-snug">
                 {name}
