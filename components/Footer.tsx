@@ -57,7 +57,21 @@ export function Footer() {
       <div className="border-t border-white/10">
         <div className="mx-auto max-w-7xl px-6 lg:px-10 py-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-[12px] text-warm-white/50">
           <p>© {new Date().getFullYear()} Strutum Holding. All rights reserved.</p>
-          <p>All inquiries are treated confidentially.</p>
+          <div className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1">
+            <p>All inquiries are treated confidentially.</p>
+            <span className="hidden sm:inline text-warm-white/25">·</span>
+            <p>
+              Developed by{" "}
+              <a
+                href="https://oredi-eugene.vercel.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-warm-white/60 hover:text-gold transition-colors underline underline-offset-2"
+              >
+                Eugene Oredi
+              </a>
+            </p>
+          </div>
         </div>
       </div>
     </footer>
