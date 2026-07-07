@@ -32,17 +32,32 @@ export function Header() {
   const [open, setOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
 
+  // Robust scroll lock for iOS Safari: overflow:hidden alone is not
+  // reliable there, so pin the body in place and restore scroll position
+  // on close.
   useEffect(() => {
-    document.body.style.overflow = open ? "hidden" : "";
+    if (!open) return;
+    const scrollY = window.scrollY;
+    const body = document.body;
+    body.style.position = "fixed";
+    body.style.top = `-${scrollY}px`;
+    body.style.left = "0";
+    body.style.right = "0";
+    body.style.width = "100%";
     return () => {
-      document.body.style.overflow = "";
+      body.style.position = "";
+      body.style.top = "";
+      body.style.left = "";
+      body.style.right = "";
+      body.style.width = "";
+      window.scrollTo(0, scrollY);
     };
   }, [open]);
 
   return (
     <header className="sticky top-0 z-50 bg-navy/95 backdrop-blur border-b border-white/10">
       <div className="mx-auto max-w-7xl px-6 lg:px-10 h-20 flex items-center justify-between">
-        <Link href="/" aria-label="Strutum Holding home">
+        <Link href="/" aria-label="Strutum Holding home" onClick={() => setOpen(false)}>
           <Logo variant="dark" />
         </Link>
 
@@ -108,9 +123,26 @@ export function Header() {
         </button>
       </div>
 
+      {/* Single full-screen overlay (covers the header too) — avoids the
+          seam/gap that occurs on iOS Safari when the menu is a separate
+          fixed block stacked below a sticky header, since the address bar
+          collapsing/expanding shifts viewport height mid-scroll. */}
       {open && (
-        <div className="lg:hidden fixed inset-x-0 top-20 bottom-0 z-40 overflow-y-auto overscroll-contain border-t border-white/10 bg-navy px-6 pb-10">
-          <nav className="flex flex-col">
+        <div className="lg:hidden fixed inset-0 z-[60] bg-navy flex flex-col">
+          <div className="flex items-center justify-between px-6 h-20 border-b border-white/10 shrink-0">
+            <Link href="/" aria-label="Strutum Holding home" onClick={() => setOpen(false)}>
+              <Logo variant="dark" />
+            </Link>
+            <button
+              className="text-warm-white"
+              onClick={() => setOpen(false)}
+              aria-label="Close menu"
+            >
+              <X size={24} />
+            </button>
+          </div>
+
+          <nav className="flex flex-col px-6 pb-10 overflow-y-auto overscroll-contain flex-1">
             {NAV.map((item) => (
               <div key={item.label}>
                 <Link
