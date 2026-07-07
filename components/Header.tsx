@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { ChevronDown, Menu, X } from "lucide-react";
 import { Logo } from "./Logo";
@@ -31,6 +31,13 @@ const NAV = [
 export function Header() {
   const [open, setOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
+
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
 
   return (
     <header className="sticky top-0 z-50 bg-navy/95 backdrop-blur border-b border-white/10">
@@ -102,7 +109,7 @@ export function Header() {
       </div>
 
       {open && (
-        <div className="lg:hidden border-t border-white/10 bg-navy px-6 pb-6">
+        <div className="lg:hidden fixed inset-x-0 top-20 bottom-0 z-40 overflow-y-auto overscroll-contain border-t border-white/10 bg-navy px-6 pb-10">
           <nav className="flex flex-col">
             {NAV.map((item) => (
               <div key={item.label}>
