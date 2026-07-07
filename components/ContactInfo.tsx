@@ -11,18 +11,18 @@ export function ContactInfo() {
 
       <div className="mt-8 space-y-5">
         <a
-          href="mailto:hello@strutumholding.com"
+          href="mailto:samwelarunga2002@gmail.com"
           className="flex items-start gap-3 group"
         >
           <Mail size={18} className="mt-0.5 text-gold shrink-0" />
           <span className="text-[14px] group-hover:text-gold transition-colors">
-            hello@strutumholding.com
+            samwelarunga2002@gmail.com
           </span>
         </a>
-        <a href="tel:+254700000000" className="flex items-start gap-3 group">
+        <a href="tel:+254110163332" className="flex items-start gap-3 group">
           <Phone size={18} className="mt-0.5 text-gold shrink-0" />
           <span className="text-[14px] group-hover:text-gold transition-colors">
-            +254 700 000 000
+            +254 110 163 332
           </span>
         </a>
         <div className="flex items-start gap-3">
@@ -34,7 +34,7 @@ export function ContactInfo() {
       </div>
 
       <a
-        href="https://wa.me/254700000000"
+        href="https://wa.me/254110163332"
         target="_blank"
         rel="noopener noreferrer"
         className="mt-8 inline-flex w-full items-center justify-center gap-2 rounded-sm border border-gold px-6 py-3 text-[12px] font-semibold tracking-wider text-gold hover:bg-gold hover:text-navy transition-colors"
