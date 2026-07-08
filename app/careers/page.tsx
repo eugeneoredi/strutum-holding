@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
-import { Header } from "@/components/Header";
 import { PageHero } from "@/components/PageHero";
 import { CareersIntro } from "@/components/CareersIntro";
 import { OpenRoles } from "@/components/OpenRoles";
 import { CareersApplicationForm } from "@/components/CareersApplicationForm";
-import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "Careers | Strutum Holding",
@@ -15,7 +13,6 @@ export const metadata: Metadata = {
 export default function CareersPage() {
   return (
     <>
-      <Header />
       <main>
         <PageHero
           eyebrow="Careers"
@@ -36,7 +33,6 @@ export default function CareersPage() {
           </div>
         </section>
       </main>
-      <Footer />
     </>
   );
 }

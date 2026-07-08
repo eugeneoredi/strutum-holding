@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
-import { Header } from "@/components/Header";
 import { PageHero } from "@/components/PageHero";
 import { IndustriesDetailGrid } from "@/components/IndustriesDetailGrid";
 import { FinalCTA } from "@/components/FinalCTA";
-import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "Industries | Strutum Holding",
@@ -14,7 +12,6 @@ export const metadata: Metadata = {
 export default function IndustriesPage() {
   return (
     <>
-      <Header />
       <main>
         <PageHero
           eyebrow="Industries"
@@ -24,7 +21,6 @@ export default function IndustriesPage() {
         <IndustriesDetailGrid />
         <FinalCTA />
       </main>
-      <Footer />
     </>
   );
 }

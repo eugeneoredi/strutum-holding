@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
-import { Header } from "@/components/Header";
 import { PageHero } from "@/components/PageHero";
 import { ContactInfo } from "@/components/ContactInfo";
 import { ContactForm } from "@/components/ContactForm";
-import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "Contact Us | Strutum Holding",
@@ -14,7 +12,6 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <>
-      <Header />
       <main>
         <PageHero
           eyebrow="Contact Us"
@@ -28,7 +25,6 @@ export default function ContactPage() {
           </div>
         </section>
       </main>
-      <Footer />
     </>
   );
 }

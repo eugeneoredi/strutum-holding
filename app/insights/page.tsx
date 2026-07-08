@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
-import { Header } from "@/components/Header";
 import { PageHero } from "@/components/PageHero";
 import { InsightsList } from "@/components/InsightsList";
 import { FinalCTA } from "@/components/FinalCTA";
-import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "Insights | Strutum Holding",
@@ -14,7 +12,6 @@ export const metadata: Metadata = {
 export default function InsightsPage() {
   return (
     <>
-      <Header />
       <main>
         <PageHero
           eyebrow="Insights"
@@ -24,7 +21,6 @@ export default function InsightsPage() {
         <InsightsList />
         <FinalCTA />
       </main>
-      <Footer />
     </>
   );
 }

@@ -1,11 +1,9 @@
 import type { Metadata } from "next";
-import { Header } from "@/components/Header";
 import { PageHero } from "@/components/PageHero";
 import { DivisionMessageCards } from "@/components/DivisionMessageCards";
 import { ServiceCategories } from "@/components/ServiceCategories";
 import { WorkingTogether } from "@/components/WorkingTogether";
 import { FinalCTA } from "@/components/FinalCTA";
-import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "Services | Strutum Holding",
@@ -16,7 +14,6 @@ export const metadata: Metadata = {
 export default function ServicesPage() {
   return (
     <>
-      <Header />
       <main>
         <PageHero
           eyebrow="Services"
@@ -28,7 +25,6 @@ export default function ServicesPage() {
         <WorkingTogether />
         <FinalCTA />
       </main>
-      <Footer />
     </>
   );
 }

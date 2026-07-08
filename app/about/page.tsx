@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Header } from "@/components/Header";
 import { PageHero } from "@/components/PageHero";
 import { CompanyStory } from "@/components/CompanyStory";
 import { MissionVision } from "@/components/MissionVision";
@@ -7,7 +6,6 @@ import { CoreValues } from "@/components/CoreValues";
 import { Leadership } from "@/components/Leadership";
 import { Governance } from "@/components/Governance";
 import { FinalCTA } from "@/components/FinalCTA";
-import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "About Us | Strutum Holding",
@@ -18,7 +16,6 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <>
-      <Header />
       <main>
         <PageHero
           eyebrow="About Us"
@@ -32,7 +29,6 @@ export default function AboutPage() {
         <Governance />
         <FinalCTA />
       </main>
-      <Footer />
     </>
   );
 }

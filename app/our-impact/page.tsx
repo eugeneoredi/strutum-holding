@@ -1,12 +1,10 @@
 import type { Metadata } from "next";
-import { Header } from "@/components/Header";
 import { PageHero } from "@/components/PageHero";
 import { ImpactMetricsBand } from "@/components/ImpactMetricsBand";
 import { CaseStudies } from "@/components/CaseStudies";
 import { Testimonials } from "@/components/Testimonials";
 import { ImpactReports } from "@/components/ImpactReports";
 import { FinalCTA } from "@/components/FinalCTA";
-import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "Our Impact | Strutum Holding",
@@ -17,7 +15,6 @@ export const metadata: Metadata = {
 export default function OurImpactPage() {
   return (
     <>
-      <Header />
       <main>
         <PageHero
           eyebrow="Our Impact"
@@ -30,7 +27,6 @@ export default function OurImpactPage() {
         <ImpactReports />
         <FinalCTA />
       </main>
-      <Footer />
     </>
   );
 }

@@ -1,12 +1,10 @@
 import type { Metadata } from "next";
-import { Header } from "@/components/Header";
 import { PageHero } from "@/components/PageHero";
 import { AdvisoryProblem } from "@/components/AdvisoryProblem";
 import { AdvisoryServicesGrid } from "@/components/AdvisoryServicesGrid";
 import { RetainerPackages } from "@/components/RetainerPackages";
 import { ComplianceChecklist } from "@/components/ComplianceChecklist";
 import { DivisionCTA } from "@/components/DivisionCTA";
-import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "Strutum Advisory | Accounting, Tax & Corporate Advisory | Strutum Holding",
@@ -17,7 +15,6 @@ export const metadata: Metadata = {
 export default function StrutumAdvisoryPage() {
   return (
     <>
-      <Header />
       <main>
         <PageHero
           eyebrow="Strutum Advisory"
@@ -36,7 +33,6 @@ export default function StrutumAdvisoryPage() {
           tone="emerald"
         />
       </main>
-      <Footer />
     </>
   );
 }

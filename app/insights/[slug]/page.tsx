@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { Header } from "@/components/Header";
-import { Footer } from "@/components/Footer";
 import { FinalCTA } from "@/components/FinalCTA";
 import { INSIGHTS, getInsight } from "@/lib/insights-data";
 
@@ -34,7 +32,6 @@ export default async function InsightArticlePage({
 
   return (
     <>
-      <Header />
       <main>
         <section className="bg-navy text-warm-white">
           <div className="mx-auto max-w-3xl px-6 lg:px-10 pt-16 pb-14 lg:pt-20 lg:pb-16">
@@ -62,7 +59,6 @@ export default async function InsightArticlePage({
 
         <FinalCTA />
       </main>
-      <Footer />
     </>
   );
 }

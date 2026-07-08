@@ -1,12 +1,10 @@
 import type { Metadata } from "next";
-import { Header } from "@/components/Header";
 import { PageHero } from "@/components/PageHero";
 import { ProblemSolution } from "@/components/ProblemSolution";
 import { ImpactServicesGrid } from "@/components/ImpactServicesGrid";
 import { ImpactProcessTimeline } from "@/components/ImpactProcessTimeline";
 import { ImpactReporting } from "@/components/ImpactReporting";
 import { DivisionCTA } from "@/components/DivisionCTA";
-import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "Strutum Impact | CSR & ESG Solutions | Strutum Holding",
@@ -17,7 +15,6 @@ export const metadata: Metadata = {
 export default function StrutumImpactPage() {
   return (
     <>
-      <Header />
       <main>
         <PageHero
           eyebrow="Strutum Impact"
@@ -36,7 +33,6 @@ export default function StrutumImpactPage() {
           tone="emerald"
         />
       </main>
-      <Footer />
     </>
   );
 }
