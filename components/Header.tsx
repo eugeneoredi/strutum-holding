@@ -55,78 +55,81 @@ export function Header() {
   }, [open]);
 
   return (
-    <header className="sticky top-0 z-50 bg-navy/95 backdrop-blur border-b border-white/10">
-      <div className="mx-auto max-w-7xl px-6 lg:px-10 h-20 flex items-center justify-between">
-        <Link href="/" aria-label="Strutum Holding home" onClick={() => setOpen(false)}>
-          <Logo variant="dark" />
-        </Link>
+    <>
+      <header className="sticky top-0 z-50 bg-navy/95 backdrop-blur border-b border-white/10">
+        <div className="mx-auto max-w-7xl px-6 lg:px-10 h-20 flex items-center justify-between">
+          <Link href="/" aria-label="Strutum Holding home" onClick={() => setOpen(false)}>
+            <Logo variant="dark" />
+          </Link>
 
-        <nav className="hidden lg:flex items-center gap-8">
-          {NAV.map((item) =>
-            item.children ? (
-              <div
-                key={item.label}
-                className="relative"
-                onMouseEnter={() => setServicesOpen(true)}
-                onMouseLeave={() => setServicesOpen(false)}
-              >
-                <button
-                  className="flex items-center gap-1 text-[13px] tracking-wide font-medium text-warm-white/85 hover:text-gold transition-colors"
-                  aria-expanded={servicesOpen}
+          <nav className="hidden lg:flex items-center gap-8">
+            {NAV.map((item) =>
+              item.children ? (
+                <div
+                  key={item.label}
+                  className="relative"
+                  onMouseEnter={() => setServicesOpen(true)}
+                  onMouseLeave={() => setServicesOpen(false)}
+                >
+                  <button
+                    className="flex items-center gap-1 text-[13px] tracking-wide font-medium text-warm-white/85 hover:text-gold transition-colors"
+                    aria-expanded={servicesOpen}
+                  >
+                    {item.label.toUpperCase()}
+                    <ChevronDown size={14} className={`transition-transform ${servicesOpen ? "rotate-180" : ""}`} />
+                  </button>
+                  {servicesOpen && (
+                    <div className="absolute left-1/2 -translate-x-1/2 top-full pt-3 w-72">
+                      <div className="bg-navy-2 border border-white/10 rounded-md shadow-2xl py-2">
+                        {item.children.map((c) => (
+                          <Link
+                            key={c.href}
+                            href={c.href}
+                            className="block px-5 py-2.5 text-[13px] text-warm-white/80 hover:text-gold hover:bg-white/5 transition-colors"
+                          >
+                            {c.label}
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className="text-[13px] tracking-wide font-medium text-warm-white/85 hover:text-gold transition-colors"
                 >
                   {item.label.toUpperCase()}
-                  <ChevronDown size={14} className={`transition-transform ${servicesOpen ? "rotate-180" : ""}`} />
-                </button>
-                {servicesOpen && (
-                  <div className="absolute left-1/2 -translate-x-1/2 top-full pt-3 w-72">
-                    <div className="bg-navy-2 border border-white/10 rounded-md shadow-2xl py-2">
-                      {item.children.map((c) => (
-                        <Link
-                          key={c.href}
-                          href={c.href}
-                          className="block px-5 py-2.5 text-[13px] text-warm-white/80 hover:text-gold hover:bg-white/5 transition-colors"
-                        >
-                          {c.label}
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
-                )}
-              </div>
-            ) : (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="text-[13px] tracking-wide font-medium text-warm-white/85 hover:text-gold transition-colors"
-              >
-                {item.label.toUpperCase()}
-              </Link>
-            )
-          )}
-        </nav>
+                </Link>
+              )
+            )}
+          </nav>
 
-        <div className="hidden lg:block">
-          <Link
-            href="/contact"
-            className="inline-flex items-center rounded-sm border border-gold bg-gold px-5 py-2.5 text-[12px] font-semibold tracking-wider text-navy hover:bg-transparent hover:text-gold transition-colors"
+          <div className="hidden lg:block">
+            <Link
+              href="/contact"
+              className="inline-flex items-center rounded-sm border border-gold bg-gold px-5 py-2.5 text-[12px] font-semibold tracking-wider text-navy hover:bg-transparent hover:text-gold transition-colors"
+            >
+              GET IN TOUCH
+            </Link>
+          </div>
+
+          <button
+            className="lg:hidden text-warm-white"
+            onClick={() => setOpen((v) => !v)}
+            aria-label="Toggle menu"
           >
-            GET IN TOUCH
-          </Link>
+            {open ? <X size={24} /> : <Menu size={24} />}
+          </button>
         </div>
+      </header>
 
-        <button
-          className="lg:hidden text-warm-white"
-          onClick={() => setOpen((v) => !v)}
-          aria-label="Toggle menu"
-        >
-          {open ? <X size={24} /> : <Menu size={24} />}
-        </button>
-      </div>
-
-      {/* Single full-screen overlay (covers the header too) — avoids the
-          seam/gap that occurs on iOS Safari when the menu is a separate
-          fixed block stacked below a sticky header, since the address bar
-          collapsing/expanding shifts viewport height mid-scroll. */}
+      {/* Rendered as a SIBLING of <header>, not a child — header has
+          backdrop-blur, and per spec an element with backdrop-filter
+          becomes the containing block for position:fixed descendants,
+          which was trapping this overlay inside header's own ~80px box
+          instead of the full viewport. */}
       {open && (
         <div className="lg:hidden fixed inset-0 z-[60] bg-navy flex flex-col">
           <div className="flex items-center justify-between px-6 h-20 border-b border-white/10 shrink-0">
@@ -178,6 +181,6 @@ export function Header() {
           </nav>
         </div>
       )}
-    </header>
+    </>
   );
 }
